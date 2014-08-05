@@ -1,0 +1,46 @@
+# vim: filetype=rc:
+out_to_x                no
+override_utf8_locale    no
+own_window              no
+
+out_to_console          yes
+background              no
+update_interval         2.0
+cpu_avg_samples         2
+net_avg_samples         2
+total_run_times         0
+short_units             yes
+use_spacer              left
+pad_percents            4
+max_text_width          0
+
+TEXT
+[ \
+    { "full_text" : "load ", "separator" : false, "separator_block_width" : 3 }, \
+    { "full_text" : "${loadavg 2} ${loadavg 3}", "color" : "\#268BD2", "separator" : false, "separator_block_width" : 14 }, \
+    { "full_text" : "cpu ", "separator" : false, "separator_block_width" : 3 }, \
+    { "full_text" : "${cpu cpu0}%", "color" : "\#268BD2", "separator" : false, "separator_block_width" : 14 }, \
+    { "full_text" : "cores ", "separator" : false, "separator_block_width" : 3 }, \
+    { "full_text" : "${cpu cpu1}% ${cpu cpu2}% ${cpu cpu3}% ${cpu cpu4}%", "separator" : false, "color" : "\#268BD2", "separator_block_width" : 14 }, \
+    { "full_text" : "disk ", "separator" : false, "separator_block_width" : 3 }, \
+    { "full_text" : "${fs_used_perc /}% ${fs_used_perc /mnt/storage}%", "color" : "\#268BD2", "separator" : false, "separator_block_width" : 14 }, \
+    { "full_text" : "mem ", "separator" : false, "separator_block_width" : 3 }, \
+    { "full_text" : "${memperc}%", "color" : "\#268BD2", "separator" : false, "separator_block_width" : 14 }, \
+    { "full_text" : "down", "separator" : false, "separator_block_width" : 3 }, \
+    { "full_text" : "${downspeedf enp3s0}K/s", "color" : "\#268BD2", "separator" : false, "separator_block_width" : 14 }, \
+    { "full_text" : "up", "separator" : false, "separator_block_width" : 3 }, \
+    { "full_text" : "${upspeedf enp3s0}K/s", "color" : "\#268BD2", "separator_block_width" : 14 }, \
+    { "full_text" : "vol ", "separator" : false, "separator_block_width" : 3 }, \
+    { "full_text" : "${exec /home/jayflo/.i3/alsavol}", "color" : "\#268BD2", "separator_block_width" : 14 }, \
+    { "full_text" : "${kernel}", "separator" : false, "separator_block_width" : 14 }, \
+    { "full_text" : "uptime", "separator" : false, "separator_block_width" : 3 }, \
+    { "full_text" : "$uptime_short", "color" : "\#268BD2", "separator_block_width" : 14  }, \
+    { "full_text" : "${time %A %b %e, %Y - %l:%M %p} " } \
+],
+
+
+
+
+
+
+

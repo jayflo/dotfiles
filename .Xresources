@@ -1,0 +1,171 @@
+! ----------------------
+!   Xft Settings
+! ----------------------
+Xft.dpi: 96
+Xft.rgba:  rgb
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.antialias: true
+Xft.hinting: true
+Xft.autohint: true
+
+! ------------------------
+!  URXVT Settings
+! ------------------------
+
+! Compile xft: Attempt to find a visual with the given bit depth; option -depth.
+URxvt*depth: 32
+
+! Fade the text by the given percentage when focus is lost; option -fade.
+URxvt*fading: 0
+/* URxvt.transparent: true */
+/* URxvt.shading: 100 */
+/* URxvt.tintColor: #103b46 */
+
+! Select the fonts to be used. This is a comma separated list of font names that are checked in order when trying to find glyphs for characters. The first font defines the cell size for characters; other fonts might be
+/* URxvt*font: -*-terminus-medium-r-*-*-20-*-*-*-*-*-*-* */
+*font: xft:Source Code Pro:size=12
+URxvt.letterspace: -20
+
+! Set scrollbar style to rxvt, plain, next or xterm. plain is the authors favourite.
+URxvt*scrollstyle: rxvt
+
+! True: enable the scrollbar [default]; option -sb. False: disable the scrollbar; option +sb.
+URxvt*scrollBar: false
+
+! True: scroll to bottom when tty receives output; option -si.  False: do not scroll to bottom when tty receives output; option +si.
+URxvt*scrollTtyOutput: false
+
+! True: scroll with scrollback buffer when tty receives new lines (i.e.  try to show the same lines) and scrollTtyOutput is False; option -sw. False: do not scroll with scrollback buffer when tty receives new lines; option
+URxvt*scrollWithBuffer: true
+
+! True: scroll to bottom when a non-special key is pressed. Special keys are those which are intercepted by rxvt-unicode for special handling and are not passed onto the shell; option -sk. False: do not scroll to bottom when
+URxvt*scrollTtyKeypress: true
+
+! Save number lines in the scrollback buffer [default 64]. This resource is limited on most machines to 65535; option -sl.
+URxvt*saveLines: 20000
+
+! Internal border of number pixels. This resource is limited to 100; option -b.
+URxvt*internalBorder: 10
+
+! External border of number pixels. This resource is limited to 100; option -w, -bw, -borderwidth.
+URxvt*externalBorder: 0
+
+! Set MWM hints to request a borderless window, i.e. if honoured by the WM, the rxvt-unicode window will not have window decorations; option -bl.
+! URxvt*borderLess: boolean
+
+! Specifies number of lines (pixel height) to insert between each row of the display [default 0]; option -lsp.
+URxvt*lineSpace: 0
+
+! True: blink the cursor. False: do not blink the cursor [default]; option -bc.
+URxvt*cursorBlink: false
+
+! True: Make the cursor underlined. False: Make the cursor a box [default]; option -uc.
+URxvt*cursorUnderline: false
+
+! True: blank the pointer when a key is pressed or after a set number of seconds of inactivity. False: the pointer is always visible [default].
+URxvt*pointerBlank: true
+
+! Specifies number of seconds before blanking the pointer [default 2]. Use a large number (e.g. 987654321) to effectively disable the timeout.
+! URxvt*pointerBlankDelay: number
+
+! Turn on/off ISO 14755 (default enabled).
+URxvt*iso14755: false
+
+! Turn on/off ISO 14755 5.2 mode (default enabled).
+URxvt*iso14755_52: false
+
+URxvt*perl-ext-common: default,matcher
+URxvt*matcher.button: 1
+
+! Binds
+URxvt*searchable-scrollback: C-f
+
+! Specifies the program to be started with a URL argument. Used by the "selection-popup" and "matcher" perl extensions.
+URxvt*url-launcher: google-chrome-stable
+
+! Solarized Colorscheme
+! {{{
+*background: #002b36
+*foreground: #657b83
+URxvt*borderColor: #002b36
+URxvt*colorUL: #d33682
+*fadeColor: #002b36
+/* *cursorColor: #93a1a1 */
+*pointerColorBackground: #586e75
+*pointerColorForeground: #93a1a1
+*color0: #073642
+*color8: #002b36
+*color1: #dc322f
+*color9: #cb4b16
+*color2: #859900
+*color10: #586e75
+*color3: #b58900
+*color11: #657b83
+*color4: #268bd2
+*color12: #839496
+*color5: #d33682
+*color13: #6c71c4
+*color6: #2aa198
+*color14: #93a1a1
+*color7: #eee8d5
+*color15: #fdf6e3
+/* ! }}} */
+
+! Zenburn
+! {{{
+/* *background: #3a3a3a */
+/* *foreground: #dcdccc */
+/* URxvt*borderColor: #3a3a3a */
+/* *cursorColor: #aaaaaa */
+/* *colorUL: #366060 */
+/* *underlineColor: #dfaf8f */
+/* *color0: #3f3f3f */
+/* *color1: #cc9393 */
+/* *color2: #7f9f7f */
+/* *color3: #d0bf8f */
+/* *color4: #6ca0a3 */
+/* *color5: #dc8cc3 */
+/* *color6: #93e0e3 */
+/* *color7: #dcdccc */
+/* *color8: #000000 */
+/* *color9: #dca3a3 */
+/* *color10: #bfebbf */
+/* *color11: #f0dfaf */
+/* *color12: #268bd2 */
+/* /1* *color12: #8cd0d3 *1/ */
+/* *color13: #dc8cc3 */
+/* *color14: #93e0e3 */
+/* *color15: #ffffff */
+! }}}
+
+! Hybrid
+/* ! {{{ */
+/* *background: #1D1F21 */
+/* *foreground: #C5C8C6 */
+/* ! black */
+/* *color0: #282A2E */
+/* *color8: #373B41 */
+/* ! red */
+/* *color1: #A54242 */
+/* *color9: #CC6666 */
+/* ! green */
+/* *color2: #8C9440 */
+/* *color10: #B5BD68 */
+/* ! yellow */
+/* *color3: #DE935F */
+/* *color11: #F0C674 */
+/* ! blue */
+/* *color4: #5F819D */
+/* *color12: #81A2BE */
+/* ! magenta */
+/* *color5: #85678F */
+/* *color13: #B294BB */
+/* ! cyan */
+/* *color6: #5E8D87 */
+/* *color14: #8ABEB7 */
+/* ! white */
+/* *color7: #707880 */
+/* *color15: #C5C8C6 */
+/* ! }}} */
+

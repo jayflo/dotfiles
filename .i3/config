@@ -1,0 +1,125 @@
+# Modifier
+set $mod Mod4
+set $Alt Mod1
+set $leftmon "DVI-I-1"
+set $rightmon "DVI-D-0"
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Font
+font pango:Source Code Sans 10
+# font -*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*
+
+# $mod bindings
+bindsym $mod+c focus child
+bindsym $mod+d exec dmenu_run -i -p 'Run > ' -fn 'SourceCodePro-10' -nb '#002b36' -nf '#657b83' -sb '#002b36' -sf '#268bd2'
+bindsym $mod+Down exec amixer -q set Master 2dB- unmute
+bindsym $mod+f fullscreen
+bindsym $mod+g exec chromium --disk-cache-dir='/home/jayflo/.config/chromium' --allow-file-access-from-files
+bindsym $mod+m split v
+bindsym $mod+minus scratchpad show
+bindsym $mod+n layout toggle split
+bindsym $mod+o move window to output right
+bindsym $mod+p focus parent
+bindsym $mod+r mode "resize"
+bindsym $mod+Return exec urxvtc
+bindsym $mod+s layout stacking
+bindsym $mod+space floating toggle
+bindsym $mod+t layout tabbed
+bindsym $mod+Up exec amixer -q set Master 2dB+ unmute
+
+# $mod+Shift
+bindsym $mod+Shift+c kill
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+m exec amixer -q set Master toggle
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+space focus mode_toggle
+bindsym $mod+Shift+u reload
+
+# Focus windows
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Moving windows
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Workspaces
+workspace_auto_back_and_forth yes
+bindsym $Alt+Tab workspace next_on_output
+
+workspace "1:misc" output $leftmon
+workspace "2:misc" output $leftmon
+workspace "3:work" output $leftmon
+workspace 4 output $rightmon
+workspace 5 output $rightmon
+
+bindsym $mod+1 workspace "1:misc"
+bindsym $mod+2 workspace "2:misc"
+bindsym $mod+3 workspace "3:work"
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+
+# Moving windows to workspaces
+bindsym $mod+Shift+1 move container to workspace "1:misc"
+bindsym $mod+Shift+2 move container to workspace "2:misc"
+bindsym $mod+Shift+3 move container to workspace "3:work"
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    bindsym l resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym j resize shrink height 10 px or 10 ppt
+    bindsym h resize grow width 10 px or 10 ppt
+
+    bindsym Right resize shrink width 10 px or 10 ppt
+    bindsym Up resize grow height 10 px or 10 ppt
+    bindsym Down resize shrink height 10 px or 10 ppt
+    bindsym Left resize grow width 10 px or 10 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Borders
+new_window pixel 3
+hide_edge_borders both
+
+# class                 border  backgr. text    indicator
+client.focused          #002530 #002530 #93a1a1 #002b36
+client.focused_inactive #002530 #002530 #93a1a1 #002b36
+client.unfocused        #002530 #002530 #586e75 #002b36
+client.urgent           #002530 #002530 #dc322f #002b36
+
+exec --no-startup-id i3-msg 'workspace 1:misc; exec /usr/bin/urxvtc'
+exec --no-startup-id sh ~/Dropbox/wallpaper/wallpaper.sh
+exec --no-startup-id dropbox start
+# exec --no-startup-id compton --backend glx --glx-no-stencil -CGb
+exec --no-startup-id compton --glx-no-stencil -CGb
+# exec --no-startup-id compton --backend glx --glx-no-stencil --paint-on-overlay --vsync opengl-swc -CGb
+
+bar {
+    output                      $leftmon
+    position                    top
+    workspace_buttons           yes
+    binding_mode_indicator      yes
+    status_command              $HOME/.i3/i3bar-conky
+
+    colors {
+        background #002530
+        statusline #93a1a1
+        separator  #002b36
+        focused_workspace   #002530 #002530 #268bd2
+        inactive_workspace  #002530 #002530 #93a1a1
+        active_workspace    #002530 #002530 #93a1a1
+        urgent_workspace    #002530 #002530 #dc322f
+    }
+}
