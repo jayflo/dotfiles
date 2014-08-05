@@ -1,0 +1,15 @@
+#!/bin/bash
+
+SRC=$(pwd)
+DEST=${HOME}
+OLD=${HOME}/dotfiles_old
+
+mkdir ${OLD}
+
+for FILE in ${SRC}
+do
+    [[ -e "${HOME}/${FILE}" ]] && mv ${HOME}/${FILE} ${OLD}/${FILE}
+    ln -s ${SRC}/${FILE} ${HOME}/${FILE}
+done
+
+[[! "$(ls -A ${OLD})" ]] && rm -r ${OLD}
