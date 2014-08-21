@@ -13,7 +13,7 @@ font pango:Source Code Sans 10
 
 # $mod bindings
 bindsym $mod+c focus child
-bindsym $mod+d exec dmenu_run -i -p 'Run > ' -fn 'SourceCodePro-10' -nb '#002b36' -nf '#657b83' -sb '#002b36' -sf '#268bd2'
+bindsym $mod+d exec dmenu_run -i -p 'Run > ' -fn 'Source Code Sans-10' -nb '#002b36' -nf '#657b83' -sb '#002b36' -sf '#268bd2'
 bindsym $mod+Down exec amixer -q set Master 2dB- unmute
 bindsym $mod+f fullscreen
 bindsym $mod+g exec chromium --disk-cache-dir='/home/jayflo/.config/chromium' --allow-file-access-from-files
@@ -89,6 +89,21 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id /home/jayflo/.i3/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id /home/jayflo/.i3/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id /home/jayflo/.i3/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id /home/jayflo/.i3/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id /home/jayflo/.i3/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
+
 # Borders
 new_window pixel 3
 hide_edge_borders both
@@ -99,12 +114,14 @@ client.focused_inactive #002530 #002530 #93a1a1 #002b36
 client.unfocused        #002530 #002530 #586e75 #002b36
 client.urgent           #002530 #002530 #dc322f #002b36
 
-exec --no-startup-id i3-msg 'workspace 1:misc; exec /usr/bin/urxvtc'
+exec --no-startup-id i3-msg "workspace 1:misc; exec /usr/bin/urxvtc"
+exec --no-startup-id i3-msg "workspace 4; exec chromium --disk-cache-dir='/home/jayflo/.config/chromium' --allow-file-access-from-files"
 exec --no-startup-id sh ~/Dropbox/wallpaper/wallpaper.sh
 exec --no-startup-id dropbox start
-# exec --no-startup-id compton --backend glx --glx-no-stencil -CGb
-exec --no-startup-id compton --glx-no-stencil -CGb
+exec --no-startup-id dunst
+# exec --no-startup-id xss-lock -- i3lock -i /home/jayflo/.i3/cloud_storage.png &
 # exec --no-startup-id compton --backend glx --glx-no-stencil --paint-on-overlay --vsync opengl-swc -CGb
+exec --no-startup-id compton --glx-no-stencil -CGb
 
 bar {
     output                      $leftmon

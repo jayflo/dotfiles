@@ -262,6 +262,7 @@ EXEC 01;31  # Unix
 .bmp 33
 .cgm 33
 .dl 33
+.djvu 33
 .dvi 33
 .emf 33
 .eps 33

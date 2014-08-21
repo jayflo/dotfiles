@@ -23,7 +23,7 @@ TEXT
     { "full_text" : "cores ", "separator" : false, "separator_block_width" : 3 }, \
     { "full_text" : "${cpu cpu1}% ${cpu cpu2}% ${cpu cpu3}% ${cpu cpu4}%", "separator" : false, "color" : "\#268BD2", "separator_block_width" : 14 }, \
     { "full_text" : "disk ", "separator" : false, "separator_block_width" : 3 }, \
-    { "full_text" : "${fs_used_perc /}% ${fs_used_perc /mnt/storage}%", "color" : "\#268BD2", "separator" : false, "separator_block_width" : 14 }, \
+    { "full_text" : "${fs_used_perc /}% ${fs_used_perc /boot}%", "color" : "\#268BD2", "separator" : false, "separator_block_width" : 14 }, \
     { "full_text" : "mem ", "separator" : false, "separator_block_width" : 3 }, \
     { "full_text" : "${memperc}%", "color" : "\#268BD2", "separator" : false, "separator_block_width" : 14 }, \
     { "full_text" : "down", "separator" : false, "separator_block_width" : 3 }, \

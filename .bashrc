@@ -5,7 +5,8 @@ if [[ -n "$PS1" ]] ; then
 
     # don't put duplicate lines in the history. See bash(1) for more options
     # ... or force ignoredups and ignorespace
-    HISTCONTROL=ignoredups:ignorespace
+    HISTCONTROL=ignoredups:erasedups:ignorespace
+    export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
     # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
     HISTSIZE=10000
@@ -50,9 +51,11 @@ fi
 ##################################################################
 # Variables
 ##################################################################
+
+source /usr/share/git/completion/git-prompt.sh
 # prompt
-PS1="┌─[\e[0;34m\w\e[m]
-└─╼ "
+PS1='┌─[\e[0;33m$(__git_ps1 "%s\e[m|")\e[0;34m\w\e[m]
+└─╼ '
 
 # Add RVM to PATH for scripting
 # export PATH=$PATH:$HOME/.rvm/bin 
@@ -95,6 +98,8 @@ alias paste="curl -F 'sprunge=<-' http://sprunge.us"
 alias dtfl="git --work-tree=$HOME/ --git-dir=$HOME/dotfiles.git"
 alias etcfl="git --work-tree=/etc/ --git-dir=/etc/etcfiles.git"
 
+alias browse="feh -g 1920x1080 -d"
+
 # vim
 alias v='vim'
 alias vs='vim --servername VIM --remote-silent "$@"'
@@ -122,10 +127,9 @@ alias pacmiru='sudo reflector --verbose -l 50 -p http --sort rate --save /etc/pa
 #   ssh $* -t '/opt/bin/tmux a || /opt/bin/tmux || /bin/ash'
 # }
 
-## Pacman aliases
-## {{{
+## package management
 alias pac="sudo pacmatic -S"        #install
-alias pacu="pacman -Syyu"	        #update system	
+alias pacu="pacman -Syyu"	        #update system
 alias pacr="sudo pacman -Rnsc"		#remove
 alias pacs="pacman -Ss"	            #search	
 alias paci="pacman -Si"		        #info
@@ -146,7 +150,6 @@ alias pacbak='pacman -Qqne > ~/.config/pkg.log && pacman -Qqme > ~/.config/pkg_a
 
 #Find package(s) that depend on <package-name>
 alias pacdep='pacman -Qi "$@" | grep "Required By"'
-# }}}
 
 #############################################################################
 #Useful functions
